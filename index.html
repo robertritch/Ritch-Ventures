@@ -863,26 +863,18 @@
             color: rgba(251, 250, 247, 0.7);
         }
         
-        /* Utilities */
-        .text-center {
-            text-align: center;
+        /* Spam honeypot - hidden from humans, visible to bots */
+        .hidden-field {
+            position: absolute;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
         }
         
-        .mt-lg {
-            margin-top: 3rem;
-        }
-        
-        .success-message {
-            background-color: #4caf50;
-            color: white;
-            padding: 16px;
-            border-radius: 6px;
-            margin-bottom: 20px;
-            display: none;
-        }
-        
-        .success-message.show {
-            display: block;
+        .form-submit[disabled] {
+            opacity: 0.65;
+            cursor: progress;
         }
         
         /* Responsive */
@@ -1192,10 +1184,11 @@
                     </div>
                 </div>
                 
-                <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)">
-                    <div class="success-message" id="successMessage">
-                        <strong>Thank you!</strong> We'll review your information and be in touch within 2 business days.
-                    </div>
+                <form class="contact-form" id="contactForm" name="operating-review" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you">
+                    <input type="hidden" name="form-name" value="operating-review">
+                    <p class="hidden-field">
+                        <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                    </p>
                     
                     <div class="form-group">
                         <label for="name">Name *</label>
@@ -1284,12 +1277,6 @@
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
-                <div>
-                    <ul class="footer-links">
-                        <li><a href="/privacy">Privacy</a></li>
-                        <li><a href="/terms">Terms</a></li>
-                    </ul>
-                </div>
             </div>
             
             <div class="footer-bottom">
@@ -1329,34 +1316,27 @@
         form.addEventListener('submit', handleFormSubmit);
         
         function handleFormSubmit(e) {
-            e.preventDefault();
-            
             // Clear previous errors
             document.querySelectorAll('.form-group').forEach(group => {
                 group.classList.remove('error');
             });
             
-            // Validate form
-            if (validateForm()) {
-                // Collect form data
-                const formData = new FormData(form);
-                const data = Object.fromEntries(formData);
-                
-                // In production, send to your backend or email service
-                // For now, show success message
-                showSuccessMessage();
-                
-                // Reset form
-                form.reset();
-                
-                // Log data (remove in production)
-                console.log('Form submitted:', data);
-                
-                // You can integrate with services like:
-                // - GoHighLevel (zapier webhook)
-                // - Formspree
-                // - Your own backend
-                // - Email service
+            // Invalid: keep the visitor on the page and show what needs fixing
+            if (!validateForm()) {
+                e.preventDefault();
+                const firstError = document.querySelector('.form-group.error');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                return;
+            }
+            
+            // Valid: let the browser POST to Netlify Forms, which records the
+            // submission and then redirects to /thank-you
+            const submitBtn = form.querySelector('.form-submit');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
             }
         }
         
@@ -1453,21 +1433,11 @@
             }
         }
         
-        function showSuccessMessage() {
-            const message = document.getElementById('successMessage');
-            message.classList.add('show');
-            
-            // Hide after 5 seconds
-            setTimeout(() => {
-                message.classList.remove('show');
-            }, 5000);
-        }
-        
         // Clear error on field focus/change
         document.querySelectorAll('input, textarea, select').forEach(field => {
             field.addEventListener('change', function() {
                 const group = this.closest('.form-group');
-                if (group.classList.contains('error')) {
+                if (group && group.classList.contains('error')) {
                     group.classList.remove('error');
                 }
             });

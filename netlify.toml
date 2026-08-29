@@ -1,0 +1,18 @@
+# Ritch Ventures - static site published from the repository root.
+# The site page lives at index.html so that "/" resolves instead of 404ing.
+[build]
+  publish = "."
+
+# The homepage used to be served from /ritch-ventures.html. Keep old links,
+# bookmarks, and search results working.
+[[redirects]]
+  from = "/ritch-ventures.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/ritch-ventures"
+  to = "/"
+  status = 301
+  force = true
