@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your operating review request has been received. Ritch Ventures will review your information and respond within two business days.">
+    <meta name="robots" content="noindex, follow">
+    <meta name="theme-color" content="#0D1726">
+    <title>Request Received | Ritch Ventures</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #0D1726;
+            --cream: #FBFAF7;
+            --rust: #B86A3C;
+            --dark-charcoal: #2C2C2C;
+            --light-gray: #F5F5F3;
+            --medium-gray: #8B8B8B;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-charcoal);
+            background-color: var(--cream);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: clamp(28px, 6vw, 56px);
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--navy);
+            letter-spacing: -0.5px;
+        }
+
+        h2 {
+            font-size: clamp(20px, 3vw, 26px);
+            font-weight: 600;
+            line-height: 1.3;
+            color: var(--navy);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .eyebrow {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--rust);
+            margin-bottom: 1rem;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .logo-mark {
+            width: 32px;
+            height: 32px;
+            background: var(--rust);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .nav-back {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--dark-charcoal);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-back:hover {
+            color: var(--rust);
+        }
+
+        /* Confirmation panel */
+        main {
+            flex: 1;
+            padding: clamp(48px, 9vw, 104px) 0 clamp(56px, 9vw, 96px);
+        }
+
+        .confirmation {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: clamp(40px, 6vw, 72px);
+            align-items: start;
+        }
+
+        @media (min-width: 900px) {
+            .confirmation {
+                grid-template-columns: 1.05fr 0.95fr;
+            }
+        }
+
+        .mark {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: rgba(184, 106, 60, 0.1);
+            border: 2px solid var(--rust);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 28px;
+        }
+
+        .mark svg {
+            width: 26px;
+            height: 26px;
+            stroke: var(--rust);
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+        }
+
+        .lede {
+            font-size: clamp(17px, 2.2vw, 20px);
+            color: var(--dark-charcoal);
+            margin-top: 1.25rem;
+            max-width: 46ch;
+        }
+
+        .rule {
+            width: 64px;
+            height: 3px;
+            background-color: var(--rust);
+            margin: 32px 0;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--rust);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #a35b32;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(184, 106, 60, 0.15);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--rust);
+            border: 2px solid var(--rust);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(184, 106, 60, 0.08);
+            transform: translateY(-2px);
+        }
+
+        /* What happens next */
+        .next {
+            background-color: var(--white);
+            border: 1px solid rgba(13, 23, 38, 0.08);
+            border-radius: 12px;
+            padding: clamp(28px, 4vw, 44px);
+            box-shadow: 0 12px 40px rgba(13, 23, 38, 0.05);
+        }
+
+        .next h2 {
+            margin-bottom: 28px;
+        }
+
+        .next-steps {
+            list-style: none;
+            display: grid;
+            gap: 26px;
+        }
+
+        .next-steps li {
+            display: grid;
+            grid-template-columns: 40px 1fr;
+            gap: 18px;
+            align-items: start;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background-color: var(--navy);
+            color: var(--cream);
+            font-weight: 700;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .next-steps h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--navy);
+            line-height: 1.35;
+            margin-bottom: 4px;
+        }
+
+        .next-steps p {
+            font-size: 15px;
+            color: var(--medium-gray);
+        }
+
+        .next-note {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(13, 23, 38, 0.08);
+            font-size: 14px;
+            color: var(--medium-gray);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--navy);
+            color: var(--cream);
+            padding: 48px 0 32px;
+        }
+
+        .footer-brand h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .footer-brand p {
+            font-size: 15px;
+            opacity: 0.7;
+        }
+
+        .footer-bottom {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(251, 250, 247, 0.15);
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .btn {
+                padding: 12px 24px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a class="logo" href="/">
+                <div class="logo-mark">RV</div>
+                <span>Ritch Ventures</span>
+            </a>
+            <a class="nav-back" href="/">Return to site</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="confirmation">
+                <div>
+                    <div class="mark" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" role="presentation">
+                            <path d="M4 12.5 L9.5 18 L20 6" />
+                        </svg>
+                    </div>
+
+                    <div class="eyebrow">Request Received</div>
+                    <h1>Thank you. Your operating review request is in.</h1>
+                    <p class="lede">Your information has been sent to Ritch Ventures. We read every submission ourselves, and we respond within two business days.</p>
+
+                    <div class="rule"></div>
+
+                    <div class="actions">
+                        <a href="/" class="btn btn-primary">Back to Ritch Ventures</a>
+                        <a href="/#process" class="btn btn-secondary">Review how we work</a>
+                    </div>
+                </div>
+
+                <section class="next" aria-labelledby="next-heading">
+                    <h2 id="next-heading">What happens next</h2>
+                    <ol class="next-steps">
+                        <li>
+                            <div class="step-number">1</div>
+                            <div>
+                                <h3>We review what you sent</h3>
+                                <p>Your revenue range, operating challenge, and twelve-month goals are read in full before we reply.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="step-number">2</div>
+                            <div>
+                                <h3>Fit conversation</h3>
+                                <p>If there is a strong match between the company, the owner, and the operating problem, we schedule a direct conversation.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="step-number">3</div>
+                            <div>
+                                <h3>Operating assessment</h3>
+                                <p>From there we identify the constraints carrying the greatest economic and organizational impact.</p>
+                            </div>
+                        </li>
+                    </ol>
+                    <p class="next-note">Nothing further is needed from you right now. If two business days pass without a reply, send your request again and it will be picked up directly.</p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-brand">
+                <h4>Ritch Ventures</h4>
+                <p>Building stronger operating companies.</p>
+            </div>
+            <div class="footer-bottom">
+                <div>Ritch Ventures is operated by Lock Equity.</div>
+                <div>&copy; 2024 Ritch Ventures. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,5 @@
+# Local Netlify dev-server state and cached artifacts
+.netlify/*
+
+# ...but keep the feature markers the deploy system reads
+!.netlify/features/
