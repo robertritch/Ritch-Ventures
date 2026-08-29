@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thank you for requesting an operating review. Ritch Ventures will review your information and be in touch within two business days.">
+    <meta name="theme-color" content="#0D1726">
+    <meta name="robots" content="noindex">
+    <title>Thank You | Ritch Ventures</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #0D1726;
+            --cream: #FBFAF7;
+            --rust: #B86A3C;
+            --dark-charcoal: #2C2C2C;
+            --light-gray: #F5F5F3;
+            --medium-gray: #8B8B8B;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-charcoal);
+            background-color: var(--cream);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--navy);
+            padding: 20px 0;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        .logo-mark {
+            width: 40px;
+            height: 40px;
+            background-color: var(--rust);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .header-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.2s ease;
+        }
+
+        .header-link:hover {
+            color: var(--white);
+        }
+
+        /* Main */
+        main {
+            flex: 1;
+            padding: 80px 0 96px;
+        }
+
+        .card {
+            max-width: 720px;
+            margin: 0 auto;
+            background-color: var(--white);
+            border: 1px solid rgba(13, 23, 38, 0.08);
+            border-radius: 10px;
+            padding: 48px;
+            box-shadow: 0 4px 24px rgba(13, 23, 38, 0.06);
+        }
+
+        .check {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: rgba(184, 106, 60, 0.12);
+            color: var(--rust);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .eyebrow {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--rust);
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: clamp(28px, 5vw, 44px);
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+
+        .lead {
+            font-size: 18px;
+            color: var(--dark-charcoal);
+            margin-bottom: 36px;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+
+        .steps {
+            list-style: none;
+            counter-reset: step;
+            margin-bottom: 36px;
+        }
+
+        .steps li {
+            counter-increment: step;
+            position: relative;
+            padding-left: 44px;
+            padding-bottom: 20px;
+        }
+
+        .steps li:last-child {
+            padding-bottom: 0;
+        }
+
+        .steps li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: var(--navy);
+            color: var(--white);
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .steps strong {
+            display: block;
+            color: var(--navy);
+        }
+
+        .steps span {
+            color: var(--medium-gray);
+            font-size: 15px;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: var(--light-gray);
+            margin: 0 0 32px;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--rust);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #a25c33;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            color: var(--navy);
+            border: 1px solid rgba(13, 23, 38, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--light-gray);
+        }
+
+        .disclaimer {
+            font-size: 13px;
+            color: var(--medium-gray);
+            max-width: 720px;
+            margin: 28px auto 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--navy);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 32px 0;
+            font-size: 14px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: space-between;
+        }
+
+        footer a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--white);
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 48px 0 64px;
+            }
+
+            .card {
+                padding: 32px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a class="logo" href="/">
+                <div class="logo-mark">RV</div>
+                <span>Ritch Ventures</span>
+            </a>
+            <a class="header-link" href="/">&larr; Back to site</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="card">
+                <div class="check" aria-hidden="true">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 6 9 17l-5-5"></path>
+                    </svg>
+                </div>
+
+                <div class="eyebrow">Request Received</div>
+                <h1>Thank you for reaching out.</h1>
+                <p class="lead">Your operating review request has been submitted. We review every inquiry personally and will be in touch within <strong>two business days</strong>.</p>
+
+                <h2>What happens next</h2>
+                <ol class="steps">
+                    <li>
+                        <strong>We review your submission</strong>
+                        <span>An operator reads through your challenge, goals, and current stage before responding.</span>
+                    </li>
+                    <li>
+                        <strong>We reply within two business days</strong>
+                        <span>You'll hear from us by email at the address you provided, with next steps or a few clarifying questions.</span>
+                    </li>
+                    <li>
+                        <strong>We schedule an introductory conversation</strong>
+                        <span>If there's a fit, we set up a call to discuss scope, timing, and what a paid assessment would cover.</span>
+                    </li>
+                </ol>
+
+                <div class="divider"></div>
+
+                <div class="actions">
+                    <a class="btn btn-primary" href="/">Return to homepage</a>
+                    <a class="btn btn-secondary" href="/#services">Explore our services</a>
+                </div>
+            </div>
+
+            <p class="disclaimer"><strong>Ritch Ventures</strong> provides business operations and growth services. It does not provide legal, tax, investment-advisory, securities-brokerage, securities-placement, or investor-solicitation services.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div>Ritch Ventures is operated by Lock Equity.</div>
+            <div>&copy; 2024 Ritch Ventures. All rights reserved.</div>
+        </div>
+    </footer>
+</body>
+</html>
